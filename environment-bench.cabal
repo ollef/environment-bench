@@ -1,0 +1,33 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.34.2.
+--
+-- see: https://github.com/sol/hpack
+
+name:           environment-bench
+version:        0.1.0.0
+category:       Web
+homepage:       https://github.com/githubuser/environment-bench#readme
+author:         Olle Fredriksson
+maintainer:     example@example.com
+copyright:      2020 Olle Fredriksson
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+
+executable environment-bench
+  main-is: Main.hs
+  other-modules:
+      Paths_environment_bench
+  hs-source-dirs:
+      src
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wtabs -Wunused-packages -funbox-strict-fields
+  build-depends:
+      base >=4.7 && <5
+    , containers
+    , deepseq
+    , gauge
+    , unordered-containers
+  default-language: Haskell2010

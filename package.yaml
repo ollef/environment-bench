@@ -1,0 +1,37 @@
+name:                environment-bench
+version:             0.1.0.0
+#synopsis:
+#description:
+homepage:            https://github.com/githubuser/environment-bench#readme
+license:             BSD3
+author:              Olle Fredriksson
+maintainer:          example@example.com
+copyright:           2020 Olle Fredriksson
+category:            Web
+extra-source-files:
+- README.md
+
+ghc-options:
+  - -Wall
+  - -Wcompat
+  - -Widentities
+  - -Wincomplete-record-updates
+  - -Wincomplete-uni-patterns
+  - -Wmissing-home-modules
+  - -Wpartial-fields
+  - -Wredundant-constraints
+  - -Wtabs
+  - -Wunused-packages
+  - -funbox-strict-fields
+
+dependencies:
+  - base >= 4.7 && < 5
+  - containers
+  - deepseq
+  - gauge
+  - unordered-containers
+
+executables:
+  environment-bench:
+    source-dirs:      src
+    main:             Main.hs
