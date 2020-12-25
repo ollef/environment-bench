@@ -19,6 +19,8 @@ import qualified Data.Map as Map
 import Data.Proxy (Proxy(Proxy))
 import Data.Sequence (Seq)
 import qualified Data.Sequence as Seq
+import Data.Vector (Vector)
+import qualified Data.Vector as Vector
 import qualified Gauge
 import Prelude hiding (lookup)
 
@@ -33,9 +35,15 @@ class Environment env where
 
 instance Environment [Element] where
   name = "Data.List"
-  empty = []
+  empty = mempty
   extend = (:)
   lookup = (List.!!)
+
+instance Environment (Vector Element) where
+  name = "Data.Vector"
+  empty = mempty
+  extend = Vector.cons
+  lookup = (Vector.!)
 
 instance Environment (Map Int Element) where
   name = "Data.Map"
@@ -70,6 +78,7 @@ withEnvironmentTypes
   -> [result]
 withEnvironmentTypes k =
   [ k (Proxy :: Proxy [Element])
+  , k (Proxy :: Proxy (Vector Element))
   , k (Proxy :: Proxy (Map Int Element))
   , k (Proxy :: Proxy (Int, IntMap Element))
   , k (Proxy :: Proxy (Int, HashMap Int Element))

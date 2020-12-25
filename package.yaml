@@ -30,6 +30,7 @@ dependencies:
   - deepseq
   - gauge
   - unordered-containers
+  - vector
 
 executables:
   environment-bench:
