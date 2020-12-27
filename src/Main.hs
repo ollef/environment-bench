@@ -11,6 +11,7 @@ module Main where
 import Control.DeepSeq (NFData)
 import Data.HashMap.Lazy (HashMap)
 import qualified Data.HashMap.Lazy as HashMap
+import Data.Foldable (foldl')
 import Data.IntMap (IntMap)
 import qualified Data.IntMap as IntMap
 import qualified Data.List as List
@@ -25,7 +26,7 @@ import qualified Gauge
 import Prelude hiding (lookup)
 
 newtype Element = Element Int
-  deriving NFData
+  deriving (NFData)
 
 class Environment env where
   name :: String
@@ -70,7 +71,7 @@ instance Environment (Seq Element) where
   lookup = Seq.index
 
 fromList :: (Environment env) => [Element] -> env
-fromList = foldr extend empty
+fromList = foldl' (flip extend) empty
 
 withEnvironmentTypes
   :: forall result
@@ -85,26 +86,37 @@ withEnvironmentTypes k =
   , k (Proxy :: Proxy (Seq Element))
   ]
 
+iterRange :: Int -> Int -> (Int -> a -> a) -> a -> a
+iterRange from to f a = go from to a where
+  go from' to' a' | from' >= to' = a'
+  go from' to' a' = let !a'' = f from' a' in go (from' + 1) to' a''
+{-# inline iterRange #-}
+
+
 combinedBench :: forall env. (Environment env) => Int -> Proxy env -> Gauge.Benchmark
 combinedBench size _ =
   Gauge.bench (name @env) $
-    Gauge.nf
-      (\size' -> 
-        let env = fromList @env $ replicate size' $ Element 41
+    Gauge.whnf
+      (\size' ->
+        let env :: env = iterRange 0 size' (\_ -> extend (Element 41)) empty
         in
-        [lookup env i | i <- [0..size - 1]]
+        iterRange 0 (size - 1) (\i acc -> lookup env i `seq` acc) ()
       )
       size
 
-extensionBench :: forall env. (Environment env, NFData env) => Int -> Proxy env -> Gauge.Benchmark
+extensionBench :: forall env. (Environment env) => Int -> Proxy env -> Gauge.Benchmark
 extensionBench size _ =
-  Gauge.bench (name @env) $ Gauge.nf (fromList @env) $ replicate size $ Element 41
+  Gauge.bench (name @env) $ Gauge.whnf
+    (\size' -> iterRange 0 size' (\_ -> extend (Element 41)) (empty :: env))
+    size
 
 lookupBench :: forall env. (Environment env, NFData env) => Int -> Proxy env -> Gauge.Benchmark
 lookupBench size _ =
   Gauge.env (pure $ fromList @env $ replicate size $ Element 41) $ \env ->
     Gauge.bench (name @env) $
-      Gauge.nf (\size' -> [lookup env i | i <- [0..size' - 1]]) size
+      Gauge.whnf (\size' -> iterRange 0 (size' - 1) (\i acc -> lookup env i `seq` acc) ())
+      size
+
 
 main :: IO ()
 main =
