@@ -17,6 +17,7 @@ import qualified Data.IntMap as IntMap
 import qualified Data.List as List
 import Data.Map (Map)
 import qualified Data.Map as Map
+import Data.Primitive.SmallArray
 import Data.Proxy (Proxy(Proxy))
 import Data.Sequence (Seq)
 import qualified Data.Sequence as Seq
@@ -28,7 +29,7 @@ import qualified Test.Tasty.Bench as Tasty.Bench
 import Prelude hiding (lookup)
 
 newtype Element = Element Int
-  deriving (NFData)
+  deriving (NFData, Show)
 
 class Environment env where
   name :: String
@@ -78,6 +79,13 @@ instance Environment (SkewList Element) where
   extend = SkewList.cons
   lookup = (SkewList.!)
 
+instance Environment (SmallArray Element) where
+  name = "Data.Primitive.SmallArray"
+  empty = mempty
+  extend x arr = createSmallArray (sizeofSmallArray arr + 1) x (\dest -> do
+    copySmallArray dest 1 arr 0 (sizeofSmallArray arr))
+  lookup = indexSmallArray
+
 fromList :: (Environment env) => [Element] -> env
 fromList = foldl' (flip extend) empty
 
@@ -93,6 +101,7 @@ withEnvironmentTypes k =
   , k (Proxy :: Proxy (Int, HashMap Int Element))
   , k (Proxy :: Proxy (Seq Element))
   , k (Proxy :: Proxy (SkewList Element))
+  , k (Proxy :: Proxy (SmallArray Element))
   ]
 
 iterRange :: Int -> Int -> (Int -> a -> a) -> a -> a
