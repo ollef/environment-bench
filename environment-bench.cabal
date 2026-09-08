@@ -28,6 +28,8 @@ executable environment-bench
       base >=4.7 && <5
     , containers
     , deepseq
+    , primitive
+    , skew-list
     , tasty-bench
     , unordered-containers
     , vector

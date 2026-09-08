@@ -3,7 +3,14 @@
 # For more information, please see the documentation at:
 #   https://docs.haskellstack.org/en/stable/topics/lock_files
 
-packages: []
+packages:
+- completed:
+    hackage: skew-list-0.1@sha256:9ff80c7b031e42a2b1ca48365a01e57076295c39d5d49e0f78fde13fc5d1e250,4363
+    pantry-tree:
+      sha256: 2400a14ed33d0d736931ba87f98e760bed804d2b68d0a080a4511ed7aaa5fbe9
+      size: 747
+  original:
+    hackage: skew-list-0.1
 snapshots:
 - completed:
     sha256: d4d51e01349a3e51b7aa6c500a9da8b0b578043badaec1d5f210cfe27672f18d

@@ -2,3 +2,5 @@ resolver:
   url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/24/58.yaml
 packages:
 - .
+extra-deps:
+- skew-list-0.1

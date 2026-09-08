@@ -20,6 +20,8 @@ import qualified Data.Map as Map
 import Data.Proxy (Proxy(Proxy))
 import Data.Sequence (Seq)
 import qualified Data.Sequence as Seq
+import Data.SkewList.Lazy (SkewList)
+import qualified Data.SkewList.Lazy as SkewList
 import Data.Vector (Vector)
 import qualified Data.Vector as Vector
 import qualified Test.Tasty.Bench as Tasty.Bench
@@ -70,6 +72,12 @@ instance Environment (Seq Element) where
   extend = (Seq.<|)
   lookup = Seq.index
 
+instance Environment (SkewList Element) where
+  name = "Data.SkewList.Lazy"
+  empty = mempty
+  extend = SkewList.cons
+  lookup = (SkewList.!)
+
 fromList :: (Environment env) => [Element] -> env
 fromList = foldl' (flip extend) empty
 
@@ -84,6 +92,7 @@ withEnvironmentTypes k =
   , k (Proxy :: Proxy (Int, IntMap Element))
   , k (Proxy :: Proxy (Int, HashMap Int Element))
   , k (Proxy :: Proxy (Seq Element))
+  , k (Proxy :: Proxy (SkewList Element))
   ]
 
 iterRange :: Int -> Int -> (Int -> a -> a) -> a -> a
