@@ -17,16 +17,19 @@ import qualified Data.IntMap as IntMap
 import qualified Data.List as List
 import Data.Map (Map)
 import qualified Data.Map as Map
+import Data.Primitive.SmallArray
 import Data.Proxy (Proxy(Proxy))
 import Data.Sequence (Seq)
 import qualified Data.Sequence as Seq
+import Data.SkewList.Lazy (SkewList)
+import qualified Data.SkewList.Lazy as SkewList
 import Data.Vector (Vector)
 import qualified Data.Vector as Vector
-import qualified Gauge
+import qualified Test.Tasty.Bench as Tasty.Bench
 import Prelude hiding (lookup)
 
 newtype Element = Element Int
-  deriving (NFData)
+  deriving (NFData, Show)
 
 class Environment env where
   name :: String
@@ -70,6 +73,19 @@ instance Environment (Seq Element) where
   extend = (Seq.<|)
   lookup = Seq.index
 
+instance Environment (SkewList Element) where
+  name = "Data.SkewList.Lazy"
+  empty = mempty
+  extend = SkewList.cons
+  lookup = (SkewList.!)
+
+instance Environment (SmallArray Element) where
+  name = "Data.Primitive.SmallArray"
+  empty = mempty
+  extend x arr = createSmallArray (sizeofSmallArray arr + 1) x (\dest -> do
+    copySmallArray dest 1 arr 0 (sizeofSmallArray arr))
+  lookup = indexSmallArray
+
 fromList :: (Environment env) => [Element] -> env
 fromList = foldl' (flip extend) empty
 
@@ -84,6 +100,8 @@ withEnvironmentTypes k =
   , k (Proxy :: Proxy (Int, IntMap Element))
   , k (Proxy :: Proxy (Int, HashMap Int Element))
   , k (Proxy :: Proxy (Seq Element))
+  , k (Proxy :: Proxy (SkewList Element))
+  , k (Proxy :: Proxy (SmallArray Element))
   ]
 
 iterRange :: Int -> Int -> (Int -> a -> a) -> a -> a
@@ -93,10 +111,10 @@ iterRange from to f a = go from to a where
 {-# inline iterRange #-}
 
 
-combinedBench :: forall env. (Environment env) => Int -> Proxy env -> Gauge.Benchmark
+combinedBench :: forall env. (Environment env) => Int -> Proxy env -> Tasty.Bench.Benchmark
 combinedBench size _ =
-  Gauge.bench (name @env) $
-    Gauge.whnf
+  Tasty.Bench.bench (name @env) $
+    Tasty.Bench.whnf
       (\size' ->
         let env :: env = iterRange 0 size' (\_ -> extend (Element 41)) empty
         in
@@ -104,29 +122,29 @@ combinedBench size _ =
       )
       size
 
-extensionBench :: forall env. (Environment env) => Int -> Proxy env -> Gauge.Benchmark
+extensionBench :: forall env. (Environment env) => Int -> Proxy env -> Tasty.Bench.Benchmark
 extensionBench size _ =
-  Gauge.bench (name @env) $ Gauge.whnf
+  Tasty.Bench.bench (name @env) $ Tasty.Bench.whnf
     (\size' -> iterRange 0 size' (\_ -> extend (Element 41)) (empty :: env))
     size
 
-lookupBench :: forall env. (Environment env, NFData env) => Int -> Proxy env -> Gauge.Benchmark
+lookupBench :: forall env. (Environment env, NFData env) => Int -> Proxy env -> Tasty.Bench.Benchmark
 lookupBench size _ =
-  Gauge.env (pure $ fromList @env $ replicate size $ Element 41) $ \env ->
-    Gauge.bench (name @env) $
-      Gauge.whnf (\size' -> iterRange 0 (size' - 1) (\i acc -> lookup env i `seq` acc) ())
+  Tasty.Bench.env (pure $ fromList @env $ replicate size $ Element 41) $ \env ->
+    Tasty.Bench.bench (name @env) $
+      Tasty.Bench.whnf (\size' -> iterRange 0 (size' - 1) (\i acc -> lookup env i `seq` acc) ())
       size
 
 
 main :: IO ()
 main =
-  Gauge.defaultMain
-    [ Gauge.bgroup "combined"
-      [Gauge.bgroup (show n) $ withEnvironmentTypes $ combinedBench n | n <- sizes]
-    , Gauge.bgroup "extension"
-      [Gauge.bgroup (show n) $ withEnvironmentTypes $ extensionBench n | n <- sizes]
-    , Gauge.bgroup "lookup"
-      [Gauge.bgroup (show n) $ withEnvironmentTypes $ lookupBench n | n <- sizes]
+  Tasty.Bench.defaultMain
+    [ Tasty.Bench.bgroup "combined"
+      [Tasty.Bench.bgroup (show n) $ withEnvironmentTypes $ combinedBench n | n <- sizes]
+    , Tasty.Bench.bgroup "extension"
+      [Tasty.Bench.bgroup (show n) $ withEnvironmentTypes $ extensionBench n | n <- sizes]
+    , Tasty.Bench.bgroup "lookup"
+      [Tasty.Bench.bgroup (show n) $ withEnvironmentTypes $ lookupBench n | n <- sizes]
     ]
   where
     sizes =

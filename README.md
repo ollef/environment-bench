@@ -15,130 +15,365 @@ Use lists at these sizes.
 ## Full results:
 
 ```
-combined/1/Data.List                     mean 5.257 ns  ( +- 29.70 ps  )
-combined/1/Data.Vector                   mean 5.520 ns  ( +- 302.0 ps  )
-combined/1/Data.Map                      mean 4.525 ns  ( +- 37.17 ps  )
-combined/1/Data.IntMap                   mean 4.526 ns  ( +- 48.56 ps  )
-combined/1/Data.HashMap.Lazy             mean 4.507 ns  ( +- 17.58 ps  )
-combined/1/Data.Sequence                 mean 5.958 ns  ( +- 129.1 ps  )
-combined/3/Data.List                     mean 25.47 ns  ( +- 415.2 ps  )
-combined/3/Data.Vector                   mean 57.94 ns  ( +- 942.2 ps  )
-combined/3/Data.Map                      mean 79.08 ns  ( +- 476.2 ps  )
-combined/3/Data.IntMap                   mean 46.93 ns  ( +- 623.6 ps  )
-combined/3/Data.HashMap.Lazy             mean 97.88 ns  ( +- 834.1 ps  )
-combined/3/Data.Sequence                 mean 34.68 ns  ( +- 374.6 ps  )
-combined/5/Data.List                     mean 44.42 ns  ( +- 1.329 ns  )
-combined/5/Data.Vector                   mean 91.75 ns  ( +- 527.2 ps  )
-combined/5/Data.Map                      mean 173.4 ns  ( +- 1.801 ns  )
-combined/5/Data.IntMap                   mean 89.60 ns  ( +- 1.819 ns  )
-combined/5/Data.HashMap.Lazy             mean 195.7 ns  ( +- 1.125 ns  )
-combined/5/Data.Sequence                 mean 74.82 ns  ( +- 1.540 ns  )
-combined/7/Data.List                     mean 67.32 ns  ( +- 935.7 ps  )
-combined/7/Data.Vector                   mean 127.8 ns  ( +- 316.9 ps  )
-combined/7/Data.Map                      mean 292.8 ns  ( +- 641.9 ps  )
-combined/7/Data.IntMap                   mean 142.6 ns  ( +- 1.361 ns  )
-combined/7/Data.HashMap.Lazy             mean 307.1 ns  ( +- 4.104 ns  )
-combined/7/Data.Sequence                 mean 162.0 ns  ( +- 702.0 ps  )
-combined/10/Data.List                    mean 133.2 ns  ( +- 2.489 ns  )
-combined/10/Data.Vector                  mean 195.6 ns  ( +- 861.9 ps  )
-combined/10/Data.Map                     mean 502.9 ns  ( +- 2.485 ns  )
-combined/10/Data.IntMap                  mean 240.1 ns  ( +- 2.040 ns  )
-combined/10/Data.HashMap.Lazy            mean 461.6 ns  ( +- 6.042 ns  )
-combined/10/Data.Sequence                mean 259.2 ns  ( +- 1.868 ns  )
-combined/15/Data.List                    mean 301.1 ns  ( +- 3.665 ns  )
-combined/15/Data.Vector                  mean 361.8 ns  ( +- 5.517 ns  )
-combined/15/Data.Map                     mean 819.7 ns  ( +- 2.607 ns  )
-combined/15/Data.IntMap                  mean 367.4 ns  ( +- 6.616 ns  )
-combined/15/Data.HashMap.Lazy            mean 739.1 ns  ( +- 3.999 ns  )
-combined/15/Data.Sequence                mean 607.8 ns  ( +- 4.793 ns  )
-combined/20/Data.List                    mean 533.7 ns  ( +- 22.53 ns  )
-combined/20/Data.Vector                  mean 509.0 ns  ( +- 1.338 ns  )
-combined/20/Data.Map                     mean 1.219 μs  ( +- 1.759 ns  )
-combined/20/Data.IntMap                  mean 557.7 ns  ( +- 2.666 ns  )
-combined/20/Data.HashMap.Lazy            mean 1.039 μs  ( +- 11.70 ns  )
-combined/20/Data.Sequence                mean 866.1 ns  ( +- 6.156 ns  )
-extension/1/Data.List                    mean 5.371 ns  ( +- 274.9 ps  )
-extension/1/Data.Vector                  mean 16.03 ns  ( +- 117.1 ps  )
-extension/1/Data.Map                     mean 8.803 ns  ( +- 356.2 ps  )
-extension/1/Data.IntMap                  mean 6.416 ns  ( +- 19.99 ps  )
-extension/1/Data.HashMap.Lazy            mean 7.253 ns  ( +- 1.395 ns  )
-extension/1/Data.Sequence                mean 3.955 ns  ( +- 305.3 ps  )
-extension/3/Data.List                    mean 7.325 ns  ( +- 380.0 ps  )
-extension/3/Data.Vector                  mean 44.83 ns  ( +- 461.8 ps  )
-extension/3/Data.Map                     mean 61.20 ns  ( +- 180.4 ps  )
-extension/3/Data.IntMap                  mean 19.80 ns  ( +- 154.9 ps  )
-extension/3/Data.HashMap.Lazy            mean 26.49 ns  ( +- 124.3 ps  )
-extension/3/Data.Sequence                mean 6.425 ns  ( +- 302.6 ps  )
-extension/5/Data.List                    mean 8.812 ns  ( +- 62.88 ps  )
-extension/5/Data.Vector                  mean 76.59 ns  ( +- 752.8 ps  )
-extension/5/Data.Map                     mean 136.1 ns  ( +- 1.377 ns  )
-extension/5/Data.IntMap                  mean 39.10 ns  ( +- 1.226 ns  )
-extension/5/Data.HashMap.Lazy            mean 103.2 ns  ( +- 223.5 ps  )
-extension/5/Data.Sequence                mean 15.45 ns  ( +- 1.130 ns  )
-extension/7/Data.List                    mean 10.66 ns  ( +- 146.7 ps  )
-extension/7/Data.Vector                  mean 111.5 ns  ( +- 2.046 ns  )
-extension/7/Data.Map                     mean 222.2 ns  ( +- 1.652 ns  )
-extension/7/Data.IntMap                  mean 59.52 ns  ( +- 1.249 ns  )
-extension/7/Data.HashMap.Lazy            mean 181.1 ns  ( +- 373.4 ps  )
-extension/7/Data.Sequence                mean 27.10 ns  ( +- 66.75 ps  )
-extension/10/Data.List                   mean 14.00 ns  ( +- 1.145 ns  )
-extension/10/Data.Vector                 mean 177.7 ns  ( +- 1.434 ns  )
-extension/10/Data.Map                    mean 379.9 ns  ( +- 1.375 ns  )
-extension/10/Data.IntMap                 mean 96.02 ns  ( +- 6.543 ns  )
-extension/10/Data.HashMap.Lazy           mean 299.4 ns  ( +- 2.137 ns  )
-extension/10/Data.Sequence               mean 56.33 ns  ( +- 7.141 ns  )
-extension/15/Data.List                   mean 19.02 ns  ( +- 1.190 ns  )
-extension/15/Data.Vector                 mean 307.6 ns  ( +- 1.728 ns  )
-extension/15/Data.Map                    mean 654.0 ns  ( +- 8.890 ns  )
-extension/15/Data.IntMap                 mean 168.7 ns  ( +- 1.182 ns  )
-extension/15/Data.HashMap.Lazy           mean 522.7 ns  ( +- 6.715 ns  )
-extension/15/Data.Sequence               mean 90.94 ns  ( +- 291.6 ps  )
-extension/20/Data.List                   mean 23.75 ns  ( +- 181.8 ps  )
-extension/20/Data.Vector                 mean 455.9 ns  ( +- 2.453 ns  )
-extension/20/Data.Map                    mean 978.1 ns  ( +- 4.354 ns  )
-extension/20/Data.IntMap                 mean 261.2 ns  ( +- 925.6 ps  )
-extension/20/Data.HashMap.Lazy           mean 696.7 ns  ( +- 4.555 ns  )
-extension/20/Data.Sequence               mean 124.1 ns  ( +- 1.137 ns  )
-lookup/1/Data.List                       mean 4.625 ns  ( +- 59.61 ps  )
-lookup/1/Data.Vector                     mean 4.523 ns  ( +- 95.51 ps  )
-lookup/1/Data.Map                        mean 4.501 ns  ( +- 30.40 ps  )
-lookup/1/Data.IntMap                     mean 4.922 ns  ( +- 30.03 ps  )
-lookup/1/Data.HashMap.Lazy               mean 4.726 ns  ( +- 46.44 ps  )
-lookup/1/Data.Sequence                   mean 4.222 ns  ( +- 47.59 ps  )
-lookup/3/Data.List                       mean 14.13 ns  ( +- 187.5 ps  )
-lookup/3/Data.Vector                     mean 8.690 ns  ( +- 31.52 ps  )
-lookup/3/Data.Map                        mean 15.22 ns  ( +- 187.0 ps  )
-lookup/3/Data.IntMap                     mean 20.44 ns  ( +- 501.8 ps  )
-lookup/3/Data.HashMap.Lazy               mean 24.25 ns  ( +- 466.0 ps  )
-lookup/3/Data.Sequence                   mean 21.77 ns  ( +- 761.0 ps  )
-lookup/5/Data.List                       mean 27.42 ns  ( +- 238.4 ps  )
-lookup/5/Data.Vector                     mean 10.88 ns  ( +- 47.80 ps  )
-lookup/5/Data.Map                        mean 31.73 ns  ( +- 457.0 ps  )
-lookup/5/Data.IntMap                     mean 36.64 ns  ( +- 1.653 ns  )
-lookup/5/Data.HashMap.Lazy               mean 39.99 ns  ( +- 343.3 ps  )
-lookup/5/Data.Sequence                   mean 43.21 ns  ( +- 316.2 ps  )
-lookup/7/Data.List                       mean 42.70 ns  ( +- 253.3 ps  )
-lookup/7/Data.Vector                     mean 13.81 ns  ( +- 45.08 ps  )
-lookup/7/Data.Map                        mean 61.96 ns  ( +- 856.6 ps  )
-lookup/7/Data.IntMap                     mean 53.90 ns  ( +- 3.117 ns  )
-lookup/7/Data.HashMap.Lazy               mean 63.54 ns  ( +- 638.1 ps  )
-lookup/7/Data.Sequence                   mean 72.68 ns  ( +- 388.7 ps  )
-lookup/10/Data.List                      mean 99.33 ns  ( +- 1.898 ns  )
-lookup/10/Data.Vector                    mean 18.51 ns  ( +- 67.36 ps  )
-lookup/10/Data.Map                       mean 93.24 ns  ( +- 1.134 ns  )
-lookup/10/Data.IntMap                    mean 84.88 ns  ( +- 4.132 ns  )
-lookup/10/Data.HashMap.Lazy              mean 88.09 ns  ( +- 465.4 ps  )
-lookup/10/Data.Sequence                  mean 125.3 ns  ( +- 794.6 ps  )
-lookup/15/Data.List                      mean 243.7 ns  ( +- 4.100 ns  )
-lookup/15/Data.Vector                    mean 40.77 ns  ( +- 197.0 ps  )
-lookup/15/Data.Map                       mean 147.8 ns  ( +- 1.236 ns  )
-lookup/15/Data.IntMap                    mean 145.8 ns  ( +- 11.76 ns  )
-lookup/15/Data.HashMap.Lazy              mean 128.9 ns  ( +- 602.3 ps  )
-lookup/15/Data.Sequence                  mean 347.7 ns  ( +- 3.170 ns  )
-lookup/20/Data.List                      mean 454.6 ns  ( +- 642.0 ps  )
-lookup/20/Data.Vector                    mean 49.77 ns  ( +- 33.88 ps  )
-lookup/20/Data.Map                       mean 206.6 ns  ( +- 1.031 ns  )
-lookup/20/Data.IntMap                    mean 205.2 ns  ( +- 14.14 ns  )
-lookup/20/Data.HashMap.Lazy              mean 185.0 ns  ( +- 3.076 ns  )
-lookup/20/Data.Sequence                  mean 587.1 ns  ( +- 8.860 ns  )
+All
+  combined
+    1
+      Data.List:                 OK
+        5.28 ns ± 408 ps
+      Data.Vector:               OK
+        5.19 ns ± 418 ps
+      Data.Map:                  OK
+        5.18 ns ± 412 ps
+      Data.IntMap:               OK
+        5.51 ns ± 502 ps
+      Data.HashMap.Lazy:         OK
+        5.20 ns ± 406 ps
+      Data.Sequence:             OK
+        5.34 ns ± 430 ps
+      Data.SkewList.Lazy:        OK
+        5.32 ns ± 476 ps
+      Data.Primitive.SmallArray: OK
+        5.23 ns ± 494 ps
+    3
+      Data.List:                 OK
+        21.5 ns ± 1.9 ns
+      Data.Vector:               OK
+        42.1 ns ± 3.4 ns
+      Data.Map:                  OK
+        40.9 ns ± 3.2 ns
+      Data.IntMap:               OK
+        36.2 ns ± 2.2 ns
+      Data.HashMap.Lazy:         OK
+        55.0 ns ± 3.8 ns
+      Data.Sequence:             OK
+        29.1 ns ± 1.7 ns
+      Data.SkewList.Lazy:        OK
+        28.9 ns ± 1.7 ns
+      Data.Primitive.SmallArray: OK
+        32.5 ns ± 1.8 ns
+    5
+      Data.List:                 OK
+        38.1 ns ± 3.5 ns
+      Data.Vector:               OK
+        73.6 ns ± 3.9 ns
+      Data.Map:                  OK
+        93.6 ns ± 6.7 ns
+      Data.IntMap:               OK
+        67.4 ns ± 2.2 ns
+      Data.HashMap.Lazy:         OK
+        107  ns ± 9.3 ns
+      Data.Sequence:             OK
+        47.4 ns ± 4.0 ns
+      Data.SkewList.Lazy:        OK
+        50.4 ns ± 3.3 ns
+      Data.Primitive.SmallArray: OK
+        56.1 ns ± 3.7 ns
+    7
+      Data.List:                 OK
+        59.5 ns ± 1.9 ns
+      Data.Vector:               OK
+        107  ns ± 9.6 ns
+      Data.Map:                  OK
+        152  ns ±  10 ns
+      Data.IntMap:               OK
+        104  ns ± 8.4 ns
+      Data.HashMap.Lazy:         OK
+        158  ns ±  13 ns
+      Data.Sequence:             OK
+        98.2 ns ± 8.0 ns
+      Data.SkewList.Lazy:        OK
+        75.7 ns ± 4.6 ns
+      Data.Primitive.SmallArray: OK
+        80.4 ns ± 6.8 ns
+    10
+      Data.List:                 OK
+        101  ns ± 6.5 ns
+      Data.Vector:               OK
+        159  ns ±  13 ns
+      Data.Map:                  OK
+        251  ns ±  15 ns
+      Data.IntMap:               OK
+        157  ns ±  14 ns
+      Data.HashMap.Lazy:         OK
+        244  ns ±  13 ns
+      Data.Sequence:             OK
+        174  ns ±  16 ns
+      Data.SkewList.Lazy:        OK
+        110  ns ± 8.2 ns
+      Data.Primitive.SmallArray: OK
+        118  ns ±  10 ns
+    15
+      Data.List:                 OK
+        213  ns ±  17 ns
+      Data.Vector:               OK
+        253  ns ±  13 ns
+      Data.Map:                  OK
+        449  ns ±  28 ns
+      Data.IntMap:               OK
+        256  ns ±  15 ns
+      Data.HashMap.Lazy:         OK
+        386  ns ±  27 ns
+      Data.Sequence:             OK
+        319  ns ±  26 ns
+      Data.SkewList.Lazy:        OK
+        181  ns ±  15 ns
+      Data.Primitive.SmallArray: OK
+        188  ns ± 7.3 ns
+    20
+      Data.List:                 OK
+        433  ns ±  27 ns
+      Data.Vector:               OK
+        368  ns ±  14 ns
+      Data.Map:                  OK
+        671  ns ±  52 ns
+      Data.IntMap:               OK
+        353  ns ±  27 ns
+      Data.HashMap.Lazy:         OK
+        541  ns ±  54 ns
+      Data.Sequence:             OK
+        428  ns ±  29 ns
+      Data.SkewList.Lazy:        OK
+        282  ns ±  28 ns
+      Data.Primitive.SmallArray: OK
+        261  ns ±  14 ns
+  extension
+    1
+      Data.List:                 OK
+        4.61 ns ± 428 ps
+      Data.Vector:               OK
+        13.8 ns ± 804 ps
+      Data.Map:                  OK
+        4.66 ns ± 402 ps
+      Data.IntMap:               OK
+        6.29 ns ± 404 ps
+      Data.HashMap.Lazy:         OK
+        6.31 ns ± 404 ps
+      Data.Sequence:             OK
+        5.62 ns ± 412 ps
+      Data.SkewList.Lazy:        OK
+        6.13 ns ± 418 ps
+      Data.Primitive.SmallArray: OK
+        10.2 ns ± 814 ps
+    3
+      Data.List:                 OK
+        6.82 ns ± 424 ps
+      Data.Vector:               OK
+        39.5 ns ± 3.0 ns
+      Data.Map:                  OK
+        32.0 ns ± 1.6 ns
+      Data.IntMap:               OK
+        17.2 ns ± 922 ps
+      Data.HashMap.Lazy:         OK
+        21.1 ns ± 1.7 ns
+      Data.Sequence:             OK
+        13.0 ns ± 416 ps
+      Data.SkewList.Lazy:        OK
+        12.4 ns ± 834 ps
+      Data.Primitive.SmallArray: OK
+        29.3 ns ± 1.7 ns
+    5
+      Data.List:                 OK
+        8.29 ns ± 800 ps
+      Data.Vector:               OK
+        66.9 ns ± 6.4 ns
+      Data.Map:                  OK
+        73.1 ns ± 7.2 ns
+      Data.IntMap:               OK
+        31.8 ns ± 1.8 ns
+      Data.HashMap.Lazy:         OK
+        57.9 ns ± 4.6 ns
+      Data.Sequence:             OK
+        20.6 ns ± 1.7 ns
+      Data.SkewList.Lazy:        OK
+        18.9 ns ± 1.9 ns
+      Data.Primitive.SmallArray: OK
+        50.2 ns ± 3.8 ns
+    7
+      Data.List:                 OK
+        9.82 ns ± 478 ps
+      Data.Vector:               OK
+        97.9 ns ± 7.3 ns
+      Data.Map:                  OK
+        125  ns ± 2.8 ns
+      Data.IntMap:               OK
+        46.7 ns ± 3.6 ns
+      Data.HashMap.Lazy:         OK
+        96.1 ns ± 7.6 ns
+      Data.Sequence:             OK
+        30.2 ns ± 3.0 ns
+      Data.SkewList.Lazy:        OK
+        25.5 ns ± 2.4 ns
+      Data.Primitive.SmallArray: OK
+        72.6 ns ± 6.6 ns
+    10
+      Data.List:                 OK
+        12.0 ns ± 842 ps
+      Data.Vector:               OK
+        145  ns ±  13 ns
+      Data.Map:                  OK
+        208  ns ±  13 ns
+      Data.IntMap:               OK
+        72.2 ns ± 6.5 ns
+      Data.HashMap.Lazy:         OK
+        155  ns ±  13 ns
+      Data.Sequence:             OK
+        47.9 ns ± 3.5 ns
+      Data.SkewList.Lazy:        OK
+        35.5 ns ± 3.4 ns
+      Data.Primitive.SmallArray: OK
+        107  ns ± 6.6 ns
+    15
+      Data.List:                 OK
+        15.9 ns ± 820 ps
+      Data.Vector:               OK
+        237  ns ±  13 ns
+      Data.Map:                  OK
+        378  ns ±  26 ns
+      Data.IntMap:               OK
+        121  ns ± 6.4 ns
+      Data.HashMap.Lazy:         OK
+        263  ns ±  26 ns
+      Data.Sequence:             OK
+        75.8 ns ± 6.5 ns
+      Data.SkewList.Lazy:        OK
+        49.8 ns ± 3.4 ns
+      Data.Primitive.SmallArray: OK
+        174  ns ±  15 ns
+    20
+      Data.List:                 OK
+        19.8 ns ± 1.6 ns
+      Data.Vector:               OK
+        343  ns ±  26 ns
+      Data.Map:                  OK
+        559  ns ±  52 ns
+      Data.IntMap:               OK
+        170  ns ±  14 ns
+      Data.HashMap.Lazy:         OK
+        384  ns ±  14 ns
+      Data.Sequence:             OK
+        99.3 ns ± 8.1 ns
+      Data.SkewList.Lazy:        OK
+        64.6 ns ± 6.4 ns
+      Data.Primitive.SmallArray: OK
+        239  ns ±  13 ns
+  lookup
+    1
+      Data.List:                 OK
+        4.32 ns ± 414 ps
+      Data.Vector:               OK
+        4.62 ns ± 404 ps
+      Data.Map:                  OK
+        5.24 ns ± 414 ps
+      Data.IntMap:               OK
+        4.62 ns ± 404 ps
+      Data.HashMap.Lazy:         OK
+        5.34 ns ± 450 ps
+      Data.Sequence:             OK
+        4.38 ns ± 400 ps
+      Data.SkewList.Lazy:        OK
+        4.35 ns ± 428 ps
+      Data.Primitive.SmallArray: OK
+        4.70 ns ± 356 ps
+    3
+      Data.List:                 OK
+        12.9 ns ± 888 ps
+      Data.Vector:               OK
+        6.60 ns ± 448 ps
+      Data.Map:                  OK
+        11.0 ns ± 834 ps
+      Data.IntMap:               OK
+        16.1 ns ± 800 ps
+      Data.HashMap.Lazy:         OK
+        19.7 ns ± 1.7 ns
+      Data.Sequence:             OK
+        14.4 ns ± 896 ps
+      Data.SkewList.Lazy:        OK
+        14.7 ns ± 818 ps
+      Data.Primitive.SmallArray: OK
+        5.95 ns ± 462 ps
+    5
+      Data.List:                 OK
+        26.9 ns ± 1.6 ns
+      Data.Vector:               OK
+        9.15 ns ± 832 ps
+      Data.Map:                  OK
+        22.1 ns ± 2.0 ns
+      Data.IntMap:               OK
+        31.7 ns ± 1.8 ns
+      Data.HashMap.Lazy:         OK
+        34.5 ns ± 1.7 ns
+      Data.Sequence:             OK
+        24.2 ns ± 1.8 ns
+      Data.SkewList.Lazy:        OK
+        29.8 ns ± 1.9 ns
+      Data.Primitive.SmallArray: OK
+        8.84 ns ± 464 ps
+    7
+      Data.List:                 OK
+        45.8 ns ± 3.4 ns
+      Data.Vector:               OK
+        11.5 ns ± 818 ps
+      Data.Map:                  OK
+        30.0 ns ± 2.0 ns
+      Data.IntMap:               OK
+        47.7 ns ± 3.6 ns
+      Data.HashMap.Lazy:         OK
+        47.8 ns ± 3.2 ns
+      Data.Sequence:             OK
+        50.1 ns ± 3.4 ns
+      Data.SkewList.Lazy:        OK
+        46.4 ns ± 3.2 ns
+      Data.Primitive.SmallArray: OK
+        10.7 ns ± 820 ps
+    10
+      Data.List:                 OK
+        83.2 ns ± 7.6 ns
+      Data.Vector:               OK
+        14.6 ns ± 800 ps
+      Data.Map:                  OK
+        47.1 ns ± 3.2 ns
+      Data.IntMap:               OK
+        75.1 ns ± 6.4 ns
+      Data.HashMap.Lazy:         OK
+        72.9 ns ± 3.8 ns
+      Data.Sequence:             OK
+        93.0 ns ± 7.5 ns
+      Data.SkewList.Lazy:        OK
+        70.4 ns ± 6.8 ns
+      Data.Primitive.SmallArray: OK
+        13.8 ns ± 1.1 ns
+    15
+      Data.List:                 OK
+        192  ns ±  13 ns
+      Data.Vector:               OK
+        22.5 ns ± 1.2 ns
+      Data.Map:                  OK
+        78.2 ns ± 4.4 ns
+      Data.IntMap:               OK
+        119  ns ± 7.9 ns
+      Data.HashMap.Lazy:         OK
+        108  ns ± 7.7 ns
+      Data.Sequence:             OK
+        180  ns ±  17 ns
+      Data.SkewList.Lazy:        OK
+        124  ns ± 6.9 ns
+      Data.Primitive.SmallArray: OK
+        21.6 ns ± 1.9 ns
+    20
+      Data.List:                 OK
+        411  ns ±  33 ns
+      Data.Vector:               OK
+        31.9 ns ± 1.8 ns
+      Data.Map:                  OK
+        115  ns ± 6.5 ns
+      Data.IntMap:               OK
+        165  ns ±  13 ns
+      Data.HashMap.Lazy:         OK
+        140  ns ±  13 ns
+      Data.Sequence:             OK
+        248  ns ±  16 ns
+      Data.SkewList.Lazy:        OK
+        206  ns ±  14 ns
+      Data.Primitive.SmallArray: OK
+        30.3 ns ± 1.9 ns
 ```

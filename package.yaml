@@ -36,7 +36,9 @@ dependencies:
   - base >= 4.7 && < 5
   - containers
   - deepseq
-  - gauge
+  - primitive
+  - skew-list
+  - tasty-bench
   - unordered-containers
   - vector
 
